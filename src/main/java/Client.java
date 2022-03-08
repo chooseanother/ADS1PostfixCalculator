@@ -10,7 +10,6 @@ public class Client {
             return calculatorVisitor.getResult();
         }catch (MalformedExpressionException exception){
             System.err.println(exception.getMessage());
-
         }
         return 0;
     }

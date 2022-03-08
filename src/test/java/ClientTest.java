@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class PostfixCalculatorTest {
+public class ClientTest {
     private static Client client;
 
     @BeforeAll
@@ -35,14 +35,5 @@ public class PostfixCalculatorTest {
         tokenList.add(new Operator(Operation.SUBTRACTION));
 
         assertEquals(8, client.evaluateExpression(tokenList));
-    }
-
-    @Test
-    void testEmpty(){
-        ArrayList<Token> tokenList = new ArrayList<>();
-
-        assertThrows(EmptyStackException.class, () -> {
-            client.evaluateExpression(tokenList);
-        });
     }
 }

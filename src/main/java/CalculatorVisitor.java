@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class CalculatorVisitor implements Visitor,Calculator{
     LinkedStack<Token> tokenStack;
 
@@ -39,7 +41,12 @@ public class CalculatorVisitor implements Visitor,Calculator{
 
     @Override
     public int getResult() throws MalformedExpressionException {
-        int result = ((Operand)tokenStack.pop()).getValue();
+        int result;
+        try {
+            result = ((Operand)tokenStack.pop()).getValue();
+        } catch (EmptyStackException e){
+            throw new MalformedExpressionException(e.getMessage());
+        }
         if (!tokenStack.isEmpty()){
             throw new MalformedExpressionException("too many numbers");
         }
